@@ -83,6 +83,11 @@ function textranslate!(doc::TeXDocument; use_separate_files::Bool=false, content
             local_preamble *= lstlisting_preamble()
             length_added_pkgs += add_lstlisting_packages!(doc)
         end
+    elseif doc.exam
+        doc.documentclass = "exam"
+        documentoptions = "[addpoints]"
+        local_preamble = ""
+        length_added_pkgs = 0
     else
         doc.documentclass = "article"
         local_preamble = lstlisting_preamble()
@@ -281,6 +286,7 @@ function texcompile(doc::TeXDocument)
         @info "Running: $(`$cmd`)"
         try
             run(`$cmd`)
+            doc.exam && run(`$cmd`)
         catch err
             error("See log file for error information: $(joinpath(output_directory, doc.jobname*".log"))")
         end

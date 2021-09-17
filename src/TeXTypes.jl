@@ -43,6 +43,7 @@ end
     tufte::Bool = false # use Tufte style (requires `lualatex` and `pdflatex`)
     jmlr::Bool = false # use JMLR style (http://www.jmlr.org/format)
     ieee::Bool = false # use IEEEtran style (https://ctan.org/tex-archive/macros/latex/contrib/IEEEtran/?lang=en)
+    exam::Bool = false # create an exam
     ieee_options::String = "conference" # conference, journal, or technote
     auto_sections::Bool = true # automatically create \sections using function names
     remove_begin::Bool = true # remove begin/end block (for multi-lines of non-function code)
